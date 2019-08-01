@@ -138,6 +138,20 @@ DHCP Client 2|Ubuntu 19.04|192.168.1.12|255.255.255.0|192.168.1.1
 - default-lease-time: thời gian mặc định một IP DHCP tồn tại được cấp phát cho người dùng
 - max-lease-time: thời gian tối đa một IP DHCP tồn tại được cấp phát cho người dùng
 
+#### Cấp IP cho một host cụ thể
+
+Bạn cần có địa chỉ MAC của máy cần cấp
+
+VD:
+```
+subnet 192.168.1.0 netmask 255.255.255.0 {
+
+    host admin {
+        hardware  ethernet 00:f0:m4:6y:89:0g;
+        fixed-address 192.168.1.15;
+    }
+```
+
 **Bước 3: Cấu hình DHCP khởi động cùng hệ thống**
 
 `systemctl start dhcpd`
@@ -166,16 +180,3 @@ DHCP Client 2|Ubuntu 19.04|192.168.1.12|255.255.255.0|192.168.1.1
 
 <img src=https://imgur.com/677wuEA.jpg>
 
-### Cấp IP cho một host cụ thể
-
-Bạn cần có địa chỉ MAC của máy cần cấp
-
-VD:
-```
-subnet 192.168.1.0 netmask 255.255.255.0 {
-
-    host admin {
-        hardware  ethernet 00:f0:m4:6y:89:0g;
-        fixed-address 192.168.1.15;
-    }
-```
