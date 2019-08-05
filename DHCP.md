@@ -144,13 +144,12 @@ Bạn cần có địa chỉ MAC của máy cần cấp
 
 VD:
 ```
-subnet 192.168.1.0 netmask 255.255.255.0 {
-
     host admin {
-        hardware  ethernet 00:f0:m4:6y:89:0g;
+        hardware  ethernet 00:0c:29:6c:77:e6;
         fixed-address 192.168.1.15;
     }
 ```
+<img src=https://imgur.com/2cZsDID.jpg>
 
 **Bước 3: Cấu hình DHCP khởi động cùng hệ thống**
 
