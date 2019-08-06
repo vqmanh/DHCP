@@ -82,3 +82,5 @@ Một số đặc điểm cơ bản của TCP để phân biệt với UDP:
 - Truyền lại các gói dữ liệu mất trên đường truyền
 - Loại bỏ các gói dữ liệu trùng lặp
 - Cơ chế hạn chế tắc nghẽn đường truyền
+
+<img src=https://imgur.com/TaqKq7g.gif>
