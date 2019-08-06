@@ -84,64 +84,72 @@ Lọc các bản tin theo giao thức BOOTP
 
 - Tcpdump là phần mềm bắt tin trong mạng làm việc trên hầu hết các phiên bản hệ điều hành unix/linux. Tcpdump cho phép bắt và lưu lại những gói tin bắt được, từ đó ta có thể sử dụng để phân tích.
 `yum install tcpdump`
-1. Hiển thị các giao diện mạng
-Với option -D sẽ hiển thị ra danh sách các giao diện mạng có sẵn và ta có thể bắt các gói tin trên các giao diện này.
+
+**1. Hiển thị các giao diện mạng**
+
+*Với option -D sẽ hiển thị ra danh sách các giao diện mạng có sẵn và ta có thể bắt các gói tin trên các giao diện này.*
 
 `tcpdump -D`
 
-2. Bắt gói tin từ một giao diện ethernet
-Khi thực hiện lệnh tcpdump mà không có tùy chọn cụ thể nó sẽ bắt tất cả các gói tin đi qua tất cả các card mạng. Option -i cho phép lọc ra một interface etherne
+<img src=https://imgur.com/tjBa2IW.jpg>
+
+**2. Bắt gói tin từ một giao diện ethernet**
+
+*Khi thực hiện lệnh tcpdump mà không có tùy chọn cụ thể nó sẽ bắt tất cả các gói tin đi qua tất cả các card mạng. Option -i cho phép lọc ra một interface etherne*
 
 `tcpdump  -i ens37`
 
-3. Chỉ bắt đúng N gói tin
-Như ví dụ trên ta thấy nó sẽ bắt tất cả các gói tin. Đẻ bắt đúng N gói tin ta dùng option -c VD chỉ bắt đúng 5 gói tin
+**3. Chỉ bắt đúng N gói tin**
+
+* Để bắt đúng N gói tin ta dùng option -c, VD: chỉ bắt đúng 5 gói tin*
 
 `tcpdump  -i ens37 -c 5`
 
-4. Bắt gói tin và ghi vào một file
-tcpdump cho phép ta ghi kết quả bắt được vào một file và khi cần ta có thể sử dụng nó cho các mục đích phân tích khác. Các file này thường có đuôi .pcap và ta có thể dùng wireshark để đọc nó Để ghi vào file ta dùng option -w
+**4. Bắt gói tin và ghi vào một file**
+
+*tcpdump cho phép ta ghi kết quả bắt được vào một file và khi cần ta có thể sử dụng nó cho các mục đích phân tích khác. Các file này thường có đuôi .pcap và ta có thể dùng wireshark để đọc nó. Để ghi vào file ta dùng option -w*
 
 `tcpdump  -XX -i ens33 -c 3 -w tcpdump1.pcap`
 
-5. Bắt các gói tin với địa chỉ IP
-Trong các ví dụ trên các gói tin hiển thị gói tin với địa chỉ hostname chứ không phải là địa chỉ IP. Để bắt các gói tin và hiển thị phần địa chỉ là địa chỉ IP ta dùng option -n
+**5. Bắt các gói tin với địa chỉ IP**
+
+*Để bắt các gói tin và hiển thị địa chỉ IP ta dùng option -n*
 
 `tcpdump  -i ens37 -n`
 
-6. Bắt gói tin với dấu thời gian
+**6. Bắt gói tin với dấu thời gian**
 
-Option -tttt hiển thị các gói tin có thêm trường ngày
+*Option -tttt hiển thị các gói tin có thêm trường ngày*
 
 `tcpdump  -i ens33 -tttt`
 
-7. Đọc các gói tin lớn hơn N bytes
+**7. Đọc các gói tin lớn hơn N bytes**
 
  `tcpdump greater số_bytes`
 
-8. Đọc các gói tin nhỏ hơn N byte# Dùng lệnh 
+**8. Đọc các gói tin nhỏ hơn N byte** 
 
 `tcpdump less số_byte`
 
-9. Chỉ nhận gói tin với một kiểu giao thức cụ thể
+**9. Chỉ nhận gói tin với một kiểu giao thức cụ thể**
 
-Ta có thể lọc các gói tin dựa vào kiểu giao thức: TCP, UDP, ARP
+*Ta có thể lọc các gói tin dựa vào kiểu giao thức: TCP, UDP, ARP*
 
 `tcpdump -i ens37 tcp`
 
-10. Bắt các gói tin qua một port cụ thể
+**10. Bắt các gói tin qua một port cụ thể**
 
 `tcpdump -i ens37 port 22`
 
-11. Bắt các gói tin trên địa chỉ nguồn hoặc đích
+**11. Bắt các gói tin trên địa chỉ nguồn hoặc đích**
 
 - Bắt theo địa chỉ nguồn: `tcpdump src IP`
 
 - Bắt theo địa chỉ đích: `tcpdump dst IP`
 
-12. Bộ lọc các gói
+**12. Bộ lọc các gói**
 
-- Ví dụ ta muốn bắt tất cả các gói tin ngoại trừ các gói arp và rarp ta có thể sử dụng điều kiện and, or hoặc not để lọc các gói tin: 
+*Ví dụ ta muốn bắt tất cả các gói tin ngoại trừ các gói arp và rarp ta có thể sử dụng điều kiện and, or hoặc not để lọc các gói tin:* 
 
 VD `tcpdump -i ens33 not arp and not rarp`
 
