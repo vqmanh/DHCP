@@ -53,9 +53,9 @@ Số byte có thể nhận bắt đầu từ giá trị của trường báo nh�
 ***Checksum:***
 *16 bít của trường kiểm tra là bổ sung của tổng tất cả các từ 16 bít trong gói tin. Trong trường hợp số octet (khối 8 bít) của header và dữ liệu là lẻ thì octet cuối được bổ sung với các bít 0. Các bít này không được truyền. Khi tính tổng, giá trị của trường kiểm tra được thay thế bằng 0*
 
-Nói một cách khác, tất cả các từ 16 bít được cộng với nhau. Kết quả thu được sau khi đảo giá trị từng bít được điền vào trường kiểm tra. Về mặt thuật toán, quá trình này giống với IPv4.
+- Nói một cách khác, tất cả các từ 16 bít được cộng với nhau. Kết quả thu được sau khi đảo giá trị từng bít được điền vào trường kiểm tra. Về mặt thuật toán, quá trình này giống với IPv4.
 
-Các địa chỉ nguồn và đích là các địa chỉ IPv4. Giá trị của trường protocol là 6 (giá trị dành cho TCP, xem thêm: Danh sách số hiệu giao thức IPv4). Giá trị của trường TCP length field là độ dài của toàn bộ phần header và dữ liệu của gói TCP.
+- Các địa chỉ nguồn và đích là các địa chỉ IPv4. Giá trị của trường protocol là 6 (giá trị dành cho TCP, xem thêm: Danh sách số hiệu giao thức IPv4). Giá trị của trường TCP length field là độ dài của toàn bộ phần header và dữ liệu của gói TCP.
 
 ***Urgent pointer:***
 Nếu cờ URG bật thì giá trị trường này chính là số từ 16 bít mà số thứ tự gói tin (sequence number) cần dịch trái.
@@ -66,18 +66,19 @@ Options
 Trường cuối cùng không thuộc về header. Giá trị của trường này là thông tin dành cho các tầng trên (trong mô hình 7 lớp OSI). Thông tin về giao thức của tầng trên không được chỉ rõ trong phần header mà phụ thuộc vào cổng được chọn.
 
 ### Thiết lập kết nối
-Để thiết lập một kết nối, TCP sử dụng một quy trình bắt tay 3 bước (3-way handshake) Trước khi client thử kết nối với một server, server phải đăng ký một cổng và mở cổng đó cho các kết nối: đây được gọi là mở bị động. Một khi mở bị động đã được thiết lập thì một client có thể bắt đầu mở chủ động. Để thiết lập một kết nối, quy trình bắt tay 3 bước xảy ra như sau:
+- Để thiết lập một kết nối, TCP sử dụng một quy trình bắt tay 3 bước (3-way handshake) Trước khi client thử kết nối với một server, server phải đăng ký một cổng và mở cổng đó cho các kết nối: đây được gọi là mở bị động. Một khi mở bị động đã được thiết lập thì một client có thể bắt đầu mở chủ động. Để thiết lập một kết nối, quy trình bắt tay 3 bước xảy ra như sau:
 
-Client yêu cầu mở cổng dịch vụ bằng cách gửi gói tin SYN (gói tin TCP) tới server, trong gói tin này, tham số sequence number được gán cho một giá trị ngẫu nhiên X.
+- Client yêu cầu mở cổng dịch vụ bằng cách gửi gói tin SYN (gói tin TCP) tới server, trong gói tin này, tham số sequence number được gán cho một giá trị ngẫu nhiên X.
 Server hồi đáp bằng cách gửi lại phía client bản tin SYN-ACK, trong gói tin này, tham số acknowledgment number được gán giá trị bằng X + 1, tham số sequence number được gán ngẫu nhiên một giá trị Y
-Để hoàn tất quá trình bắt tay ba bước, client tiếp tục gửi tới server bản tin ACK, trong bản tin này, tham số sequence number được gán cho giá trị bằng X + 1 còn tham số acknowledgment number được gán giá trị bằng Y + 1
+- Để hoàn tất quá trình bắt tay ba bước, client tiếp tục gửi tới server bản tin ACK, trong bản tin này, tham số sequence number được gán cho giá trị bằng X + 1 còn tham số acknowledgment number được gán giá trị bằng Y + 1
 Tại thời điểm này, cả client và server đều được xác nhận rằng, một kết nối đã được thiết lập.
 
 Truyền dữ liệu
 Một số đặc điểm cơ bản của TCP để phân biệt với UDP:
 
-Truyền dữ liệu không lỗi (do có cơ chế sửa lỗi/truyền lại)
-Truyền các gói dữ liệu theo đúng thứ tự
-Truyền lại các gói dữ liệu mất trên đường truyền
-Loại bỏ các gói dữ liệu trùng lặp
-Cơ chế hạn chế tắc nghẽn đường truyền
+- Truyền dữ liệu không lỗi (do có cơ chế sửa lỗi/truyền lại)
+
+- Truyền các gói dữ liệu theo đúng thứ tự
+- Truyền lại các gói dữ liệu mất trên đường truyền
+- Loại bỏ các gói dữ liệu trùng lặp
+- Cơ chế hạn chế tắc nghẽn đường truyền
