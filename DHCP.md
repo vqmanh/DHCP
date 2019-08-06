@@ -83,7 +83,7 @@ Lọc các bản tin theo giao thức BOOTP
 ### A3. Tìm hiểu cơ bản về tcpdump
 
 - Tcpdump là phần mềm bắt tin trong mạng làm việc trên hầu hết các phiên bản hệ điều hành unix/linux. Tcpdump cho phép bắt và lưu lại những gói tin bắt được, từ đó ta có thể sử dụng để phân tích.
-
+`yum install tcpdump`
 1. Hiển thị các giao diện mạng
 Với option -D sẽ hiển thị ra danh sách các giao diện mạng có sẵn và ta có thể bắt các gói tin trên các giao diện này.
 
